@@ -348,7 +348,7 @@ function buildEntry(name,fr){
  const m=NAMEMAP[norm(name)];let sci='',g='Otros',sil='Passerine',e=0,ek='',cr='',canon=name,code='';
  if(m){canon=m[0];sci=m[1];g=m[2];sil=m[3];const fl=m[4];ek=fl===1?'END':(fl===2?'near':'');e=fl===1?1:0;cr=m[5];code=m[6];}
  const h=(ek||cr||ICONIC[canon])?1:0;
- return {n:canon,sci,g,sil,e,ek,cr,h,code,fr:Math.round(fr*10)/10,t:tierOf(fr)};
+ return {n:canon,sci,g,sil,e,ek,cr,h,code,fr:Math.round(fr*10)/10,t:tierOf(fr),es:(ESNAME[sci]||'')};
 }
 function applyTSV(parsed){
  const sid=matchSite(parsed.name);
@@ -405,8 +405,8 @@ function buildTodas(){
  const byK=new Map(),regMax={andes:new Map(),nuboso:new Map(),selva:new Map()};
  DATA.sites.forEach(function(s){var sn=SHORTNAME[s.id]||s.name;s.sp.forEach(function(sp){
   if(sp.mam||sp.fr==null)return;var key=sp.code||norm(sp.n);var cur=byK.get(key);
-  if(!cur){byK.set(key,{n:sp.n,sci:sp.sci,g:sp.g,sil:sp.sil,e:sp.e,ek:sp.ek,cr:sp.cr,code:sp.code,fr:sp.fr,h:sp.h?1:0,best:sn,bestday:s.dlabel});}
-  else{if(sp.fr>(cur.fr==null?-1:cur.fr)){cur.fr=sp.fr;cur.best=sn;cur.bestday=s.dlabel;cur.n=sp.n;cur.sci=sp.sci;cur.g=sp.g;cur.sil=sp.sil;cur.e=sp.e;cur.ek=sp.ek;cur.cr=sp.cr;cur.code=sp.code;}if(sp.h)cur.h=1;}
+  if(!cur){byK.set(key,{n:sp.n,sci:sp.sci,g:sp.g,sil:sp.sil,e:sp.e,ek:sp.ek,cr:sp.cr,code:sp.code,fr:sp.fr,h:sp.h?1:0,best:sn,bestday:s.dlabel,es:(sp.es||ESNAME[sp.sci]||'')});}
+  else{if(sp.fr>(cur.fr==null?-1:cur.fr)){cur.fr=sp.fr;cur.best=sn;cur.bestday=s.dlabel;cur.n=sp.n;cur.sci=sp.sci;cur.g=sp.g;cur.sil=sp.sil;cur.e=sp.e;cur.ek=sp.ek;cur.cr=sp.cr;cur.code=sp.code;cur.es=(sp.es||ESNAME[sp.sci]||'');}if(sp.h)cur.h=1;}
   var rm=regMax[s.region];if(rm){var rc=rm.get(key)||0;if(sp.fr>rc)rm.set(key,sp.fr);}
  });});
  DATA.todas.sp=[...byK.values()].sort(function(a,b){return (b.fr==null?-1:b.fr)-(a.fr==null?-1:a.fr);});
