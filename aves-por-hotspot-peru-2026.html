@@ -21,6 +21,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-heigh
 .topbar a{color:var(--ink2);text-decoration:none;padding:3px 8px;border-radius:6px}.topbar a:hover{background:var(--card);color:var(--ink)}
 .topbar .home{font-family:var(--serif);font-weight:600;font-size:.92rem;color:var(--ink)}.topbar .home b{color:var(--rust)}
 .topbar .sp{margin-left:auto}
+.topbar .tb-label{color:var(--ink3)}
 .wrap{max-width:1080px;margin:0 auto;padding:clamp(16px,3vw,38px) clamp(14px,3vw,40px) 60px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
@@ -134,6 +135,16 @@ h1 em{font-style:italic;color:var(--ink2);font-weight:400}
 .foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink3);line-height:1.8}
 .foot a{color:var(--ink2)}
 @media (max-width:560px){.slist{grid-template-columns:1fr}.fwrap{width:84px}.plate{width:50px;height:40px}}
+/* móvil: barra superior que se ajusta + zonas de toque mayores */
+@media (max-width:640px){
+  .topbar .in{flex-wrap:wrap;gap:2px 6px;font-size:.8rem}
+  .topbar a{padding:8px 11px}
+  .topbar .home{width:100%;font-size:1rem;margin-bottom:2px}
+  .topbar .sp,.topbar .tb-label{display:none}
+  .rt{padding:11px 17px;font-size:14px}
+  .fb{padding:8px 14px;font-size:12.5px}
+  .srch{padding:10px 13px}.srch input{font-size:16px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
 .totop{position:fixed;right:16px;bottom:16px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line2);background:var(--card);color:var(--ink2);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 22px -10px rgba(26,36,30,.55);opacity:0;pointer-events:none;transform:translateY(10px);transition:.2s;z-index:60;display:flex;align-items:center;justify-content:center}
 .totop.show{opacity:1;pointer-events:auto;transform:none}
@@ -152,7 +163,7 @@ h1 em{font-style:italic;color:var(--ink2);font-weight:400}
 <div class="topbar"><div class="in">
  <span class="home">Perú <b>'26</b></span>
  <a href="index.html">Inicio</a><a href="index.html#dias">Día a día</a><a href="index.html#mapa">Mapa</a>
- <span class="sp"></span><span style="color:var(--ink3)">Guía de aves</span>
+ <span class="sp"></span><span class="tb-label">Guía de aves</span>
 </div></div>
 
 <div class="wrap">
