@@ -123,24 +123,36 @@
 
   /* ---- day cards (reused identity) ---- */
   #days{margin-top:20px}
-  .d{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--phc,var(--line));border-radius:13px;padding:18px 20px;margin:14px 0;scroll-margin-top:64px}
+  .d{position:relative;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--phc,var(--line));border-radius:15px;padding:18px 20px;margin:16px 0;scroll-margin-top:64px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,22,.03);transition:box-shadow .22s ease,transform .22s ease}
+  .d:hover{box-shadow:0 14px 32px -20px rgba(20,30,22,.34)}
   .d-head{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
-  .d-date{font-family:var(--serif);font-size:1.7rem;font-weight:600;line-height:1;color:var(--phc,var(--ink))}
+  .d-date{font-family:var(--serif);font-size:1.72rem;font-weight:600;line-height:1;color:var(--phc,var(--ink))}
   .d-date span{font-family:var(--mono);font-size:.6rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;font-weight:400;margin-left:7px}
   .chip{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--phc) 15%,white);color:color-mix(in srgb,var(--phc) 62%,var(--ink));border:1px solid color-mix(in srgb,var(--phc) 30%,white)}
-  .alt{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);margin-left:auto}
-  .d-title{font-family:var(--serif);font-size:1.32rem;font-weight:600;margin:10px 0 2px}
-  .d-do{font-size:.96rem;color:var(--ink-soft);margin:4px 0 0;max-width:70ch}
-  .transit{margin:13px 0 4px}
-  .bar{display:flex;height:13px;border-radius:5px;overflow:hidden;background:#eceee9;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+  .alt{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);margin-left:auto}
+  .alt svg{width:13px;height:13px;fill:currentColor;stroke:none;flex:0 0 auto}
+  .d-title{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:12px 0 4px;line-height:1.14}
+  /* info rows — aligned icon gutter for fast scanning */
+  .d-rows{margin:12px 0 2px;display:flex;flex-direction:column}
+  .row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid color-mix(in srgb,var(--line) 65%,transparent)}
+  .row:first-child{border-top:0;padding-top:4px}
+  .row-ic{flex:0 0 30px;width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;color:color-mix(in srgb,var(--phc) 60%,var(--ink));background:color-mix(in srgb,var(--phc) 9%,var(--card));border:1px solid color-mix(in srgb,var(--phc) 20%,var(--line))}
+  .row-ic svg{width:19px;height:19px;fill:currentColor;stroke:none}
+  .row-b{flex:1;min-width:0}
+  .row-k{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:2px 0 4px}
+  .row-k-x{text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-soft);margin-left:7px}
+  .row-v{font-size:.92rem;color:var(--ink-soft);max-width:72ch}
+  .row-v b{color:var(--ink);font-weight:600}
+  .row.plan .row-v{font-size:1rem}
+  .row.dato .row-v{font-size:.87rem;color:var(--ink-faint)}
+  .row.dato .row-v b{color:var(--ink-soft)}
+  /* transit bar (inside its row) */
+  .bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:#eceee9;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);margin-top:3px;max-width:520px}
   .seg{height:100%}.seg.enlace{background:var(--enlace)}.seg.ruta{background:var(--ruta)}.seg.libre{background:var(--libre)}
-  .transit small{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint)}
-  .kv{font-size:.9rem;color:var(--ink-soft);margin:9px 0 0}
-  .kv .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-right:8px}
-  .kv b{color:var(--ink);font-weight:600}
-  .sp h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:15px 0 5px}
-  .sp-cat{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--ink);margin-right:4px}
-  .sp-group{margin:2px 0 7px}
+  .sp-group{margin:8px 0 0;display:flex;gap:9px;align-items:baseline}
+  .sp-group:first-child{margin-top:0}
+  .sp-cat{flex:0 0 auto;width:4.8em;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:700}
+  .sp-list{flex:1;min-width:0}
   .sp-item{display:inline;font-size:.9rem;color:var(--ink)}
   .sp-item i{color:var(--ink-faint);font-size:.85em}
   .t{font-family:var(--mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:1px 5px;border-radius:4px;vertical-align:.09em}
@@ -150,8 +162,16 @@
   .t.nest{background:color-mix(in srgb,var(--harpia) 16%,white);color:color-mix(in srgb,var(--harpia) 72%,black)}
   .fl{font-family:var(--mono);font-size:.56rem;font-weight:700;color:var(--harpia);border:1px solid color-mix(in srgb,var(--harpia) 40%,white);border-radius:4px;padding:0 4px;vertical-align:.1em}
   .sep{color:var(--line)}
-  .d-data{font-size:.86rem;color:var(--ink-faint);margin:13px 0 0;border-top:1px dashed var(--line);padding-top:10px;max-width:72ch}
-  .d-data b{color:var(--ink-soft)}
+  /* clima (inside its row) */
+  .clima-t{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;color:color-mix(in srgb,var(--phc) 55%,var(--ink));background:color-mix(in srgb,var(--phc) 14%,white);border:1px solid color-mix(in srgb,var(--phc) 30%,white);border-radius:6px;padding:2px 8px;margin-right:8px;white-space:nowrap;vertical-align:1px}
+  .clima-w{margin:7px 0 0;font-size:.9rem}
+  .wear-k{display:inline-block;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:color-mix(in srgb,var(--phc) 52%,var(--ink-faint));font-weight:700;margin-right:8px;border:1px solid color-mix(in srgb,var(--phc) 24%,var(--line));border-radius:5px;padding:1px 6px;vertical-align:1px}
+  /* sleep footer — closes each day */
+  .d-sleep{display:flex;align-items:center;gap:12px;margin:14px -20px -18px;padding:14px 20px 15px;background:color-mix(in srgb,var(--phc) 8%,var(--card));border-top:1px solid color-mix(in srgb,var(--phc) 20%,var(--line))}
+  .sl-ic{flex:0 0 32px;width:32px;height:32px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;color:#fff;background:color-mix(in srgb,var(--phc) 80%,var(--ink));box-shadow:0 2px 8px -3px color-mix(in srgb,var(--phc) 55%,transparent)}
+  .sl-ic svg{width:19px;height:19px;fill:currentColor;stroke:none}
+  .sl-k{display:block;font-family:var(--mono);font-size:.57rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 1px}
+  .d-sleep b{font-family:var(--serif);font-size:1.02rem;color:var(--ink);font-weight:600}
   .pa-andes{--phc:var(--andes)}.pa-mapi{--phc:var(--mapi)}.pa-cultural{--phc:var(--cultural)}.pa-reservada{--phc:var(--reservada)}.pa-harpia{--phc:var(--harpia)}.pa-transito{--phc:var(--transito)}.pa-libre{--phc:var(--libre)}
 
   /* ---- aves por hotspot ---- */
@@ -182,7 +202,7 @@
 
   /* ---- icono de modo por día ---- */
   .dmode{flex:0 0 auto;color:var(--phc);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:color-mix(in srgb,var(--phc) 12%,var(--card));border:1px solid color-mix(in srgb,var(--phc) 26%,var(--card))}
-  .dmode .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .dmode .ic{width:21px;height:21px;fill:currentColor;stroke:none}
   /* ---- leyenda de hábitats bajo la espina ---- */
   .habkey{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 0;padding:0;list-style:none;justify-content:center}
   .habkey li{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.62rem;color:var(--ink-faint)}
@@ -284,7 +304,7 @@
   <section class="sec" id="dias">
     <p class="section-label"><span class="no">03</span> Día a día</p>
     <h2 class="big">Qué hacemos cada jornada</h2>
-    <p class="lead">Cada día: dónde estamos, qué hacemos, cuánto se viaja (la barra), dónde dormimos y la fauna destacada con su probabilidad honesta.</p>
+    <p class="lead">Cada día: dónde estamos, qué hacemos, cuánto se viaja (la barra), dónde dormimos, el <b>clima que esperar y la ropa</b> recomendada, y la fauna destacada con su probabilidad honesta. <span style="color:var(--ink-faint)">Las temperaturas son normales de agosto (seca andina y amazónica), no un pronóstico.</span></p>
     <ul class="barkey">
       <li><span class="ks enlace"></span> Traslado / enlace</li>
       <li><span class="ks ruta"></span> Ruta con observación</li>
@@ -474,6 +494,76 @@ const DAYS=[
   data:'Se acab\u00f3. Toca pasar las listas a eBird y sumar los lifers.'}
 ];
 
+/* ---------- clima y ropa (normales de agosto: seca andina / seca amazónica) ---------- */
+const CLIMA={
+ '14':{t:'—',x:'Día de avión. Escala en Lima al amanecer: invierno costero, cielo gris (garúa) y húmedo, ~15–18 °C, pero solo hacéis conexión.',
+   w:'Ropa cómoda y una capa de abrigo para la cabina (va fresca). Ten a mano el equipo de frío andino para mañana.'},
+ '15':{t:'3–21 °C',x:'Estación seca andina: días soleados y secos, noche muy fría. Fuerte salto térmico día/noche y sol intenso (UV alto) a esta altura.',
+   w:'Capas: camiseta + forro de día; chaqueta de abrigo y gorro al caer el sol. Gorra, gafas de sol y crema solar. Primer día en altura: con calma.'},
+ '16':{t:'-3–12 °C',x:'Amanecer bajo cero con escarcha; a mediodía sol fuerte pero viento gélido y UV extremo. Seco. A 4 300 m todo va lento.',
+   w:'Equipo de invierno al alba: térmica, forro, plumas o cortavientos, gorro que cubra las orejas, guantes y buff. Gafas y crema solar imprescindibles. Ve quitando capas según sube el sol.'},
+ '17':{t:'12–24 °C',x:'Bosque nuboso: más templado y húmedo que el valle. Cielos variables y algún chubasco posible aun en seca. Tarde suave.',
+   w:'Capas ligeras: camiseta + forro fino. Chubasquero a mano (aquí llueve sin avisar). Calzado cómodo de andar. Noche fresca.'},
+ '18':{t:'8–23 °C',x:'Mañana en bosque nuboso: niebla al alba y sol fuerte cuando abre. Sudaréis subiendo la Montaña. Noche fría al llegar a Cusco.',
+   w:'Capas para la subida (calor al subir, fresco arriba). Chubasquero y protección solar. Una capa de abrigo lista para Cusco de noche.'},
+ '19':{t:'8–24 °C',x:'Empieza frío y con niebla en el paso de Acjanaco; se va calentando y humedeciendo al bajar. Bosque nuboso = lluvia posible a cualquier hora.',
+   w:'Sistema de capas: arrancáis con forro, chaqueta y gorro y los vais quitando en la bajada. Chubasquero imprescindible. Hoy pasáis del frío al calor.'},
+ '20':{t:'22–31 °C',x:'Calor y humedad amazónicos. Bochorno, posibilidad de chubasco y parada en aguas termales. Empiezan los mosquitos.',
+   w:'Ropa ligera de secado rápido, manga y pantalón largos (sol e insectos). Poncho de lluvia, repelente y bañador para las termas.'},
+ '21':{t:'20–32 °C',x:'Selva baja: calor y humedad altos. En seca puede caer un «friaje» (viento del sur) que baja a ~15 °C uno o dos días. En la barca corre el aire.',
+   w:'Manga y pantalón largos ligeros (sol y mosquitos), sombrero de ala ancha, repelente fuerte y poncho. Lleva un forro fino por si entra el friaje.'},
+ '22':{t:'21–32 °C',x:'Día completo de calor húmedo en la cocha y el bosque. La caminata nocturna es cálida, húmeda y con muchos insectos.',
+   w:'Mismo kit de selva. Para la noche: manga larga contra mosquitos, repelente y linterna frontal (mejor con luz roja).'},
+ '23':{t:'20–32 °C',x:'Día caluroso y húmedo. En la vigilia del blind estaréis quietos horas; de noche se nota más fresco y la humedad cala.',
+   w:'Kit de selva de día. En el escondite: manga larga y una capa fina (estáis parados), repelente, ropa oscura y silenciosa. Paciencia.'},
+ '24':{t:'21–31 °C',x:'Calor húmedo de piedemonte. Barca larga de salida y caminata al árbol del nido; puede caer un chubasco.',
+   w:'Manga larga ligera, protección solar, repelente y poncho. Calzado con buen agarre para el sendero del nido.'},
+ '25':{t:'15–30 °C',x:'Al alba, bosque nuboso de San Pedro: fresco, húmedo y con niebla. El resto del día, calor de piedemonte. Lluvia posible arriba.',
+   w:'Capas ligeras + chubasquero para el alba en San Pedro; ropa fresca de selva para la tarde. Repelente todo el día.'},
+ '26':{t:'6–26 °C',x:'Día de transición: de la selva calurosa subís a la puna fría. En Huacarpay, al final, sopla viento frío; noche gélida en Cusco.',
+   w:'Salís en ropa ligera, pero ten el abrigo a mano en la mochila: para Huacarpay y Cusco tocan forro, chaqueta y gorro otra vez.'},
+ '27':{t:'4–20 °C',x:'Cañón seco interandino: arranque frío, sol que calienta a media mañana y mucha exposición (UV alto). Puede hacer viento. Seco.',
+   w:'Capas: abrigo al empezar, camiseta al sol del mediodía. Gorra, crema solar y gafas (muy expuesto). Buen calzado y agua.'},
+ '28':{t:'3–21 °C',x:'Cusco en seca: días soleados y agradables, noches muy frías. Sol fuerte de mediodía a 3 400 m.',
+   w:'Capas andinas: cómodo para pasear de día, chaqueta de abrigo para la tarde-noche. Gorra y crema solar al mediodía.'},
+ '29':{t:'3–18 °C',x:'En pie a las 4:30 con el frío seco de Cusco (~3–6 °C). Luego, día de aviones; escala en Lima, gris y húmeda.',
+   w:'Capa de abrigo para la salida de madrugada; ropa cómoda de viaje. Guarda el equipo de frío accesible: salís con la helada.'},
+ '30':{t:'18–34 °C',x:'Aterrizáis en Madrid a las 05:10: amanecer templado de verano (~18–20 °C), pero el día apretará el calor estival.',
+   w:'Ropa de verano; ya habréis guardado todas las capas peruanas. Fin del viaje.'}
+};
+const WICONS={
+ sun:'<svg viewBox="0 -960 960 960"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/></svg>',
+ frost:'<svg viewBox="0 -960 960 960"><path d="M440-80v-166L310-118l-56-56 186-186v-80h-80L174-254l-56-56 128-130H80v-80h166L118-650l56-56 186 186h80v-80L254-786l56-56 130 128v-166h80v166l130-128 56 56-186 186v80h80l186-186 56 56-128 130h166v80H714l128 130-56 56-186-186h-80v80l186 186-56 56-130-128v166h-80Z"/></svg>',
+ cloud:'<svg viewBox="0 -960 960 960"><path d="M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H260Zm0-80h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z"/></svg>',
+ rain:'<svg viewBox="0 -960 960 960"><path d="M558-84q-15 8-30.5 2.5T504-102l-60-120q-8-15-2.5-30.5T462-276q15-8 30.5-2.5T516-258l60 120q8 15 2.5 30.5T558-84Zm240 0q-15 8-30.5 2.5T744-102l-60-120q-8-15-2.5-30.5T702-276q15-8 30.5-2.5T756-258l60 120q8 15 2.5 30.5T798-84Zm-480 0q-15 8-30.5 2.5T264-102l-60-120q-8-15-2.5-30.5T222-276q15-8 30.5-2.5T276-258l60 120q8 15 2.5 30.5T318-84Zm-18-236q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Zm0-80h400q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-40q0-66-47-113t-113-47q-48 0-87.5 26T333-704l-10 24h-25q-57 2-97.5 42.5T160-540q0 58 41 99t99 41Zm180-200Z"/></svg>',
+ hot:'<svg viewBox="0 -960 960 960"><path d="M480-80q-83 0-141.5-58.5T280-280q0-48 21-89.5t59-70.5v-320q0-50 35-85t85-35q50 0 85 35t35 85v320q38 29 59 70.5t21 89.5q0 83-58.5 141.5T480-80Zm-40-440h80v-40h-40v-40h40v-80h-40v-40h40v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240Z"/></svg>'
+};
+const CLIMAICON={'14':'cloud','15':'sun','16':'frost','17':'cloud','18':'cloud','19':'rain','20':'hot','21':'hot','22':'hot','23':'hot','24':'hot','25':'rain','26':'sun','27':'sun','28':'sun','29':'sun','30':'sun'};
+/* section icons (aligned gutter of each day card) */
+const SEC={
+ plan:'<svg viewBox="0 -960 960 960"><path d="m260-260 300-140 140-300-300 140-140 300Zm220-180q-17 0-28.5-11.5T440-480q0-17 11.5-28.5T480-520q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>',
+ transit:'<svg viewBox="0 -960 960 960"><path d="M360-120q-66 0-113-47t-47-113v-327q-35-13-57.5-43.5T120-720q0-50 35-85t85-35q50 0 85 35t35 85q0 39-22.5 69.5T280-607v327q0 33 23.5 56.5T360-200q33 0 56.5-23.5T440-280v-400q0-66 47-113t113-47q66 0 113 47t47 113v327q35 13 57.5 43.5T840-240q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-39 22.5-70t57.5-43v-327q0-33-23.5-56.5T600-760q-33 0-56.5 23.5T520-680v400q0 66-47 113t-113 47ZM240-680q17 0 28.5-11.5T280-720q0-17-11.5-28.5T240-760q-17 0-28.5 11.5T200-720q0 17 11.5 28.5T240-680Zm480 480q17 0 28.5-11.5T760-240q0-17-11.5-28.5T720-280q-17 0-28.5 11.5T680-240q0 17 11.5 28.5T720-200Z"/></svg>',
+ hab:'<svg viewBox="0 -960 960 960"><path d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Z"/></svg>',
+ fauna:'<svg viewBox="0 -960 960 960"><path d="m334-80-74-30 58-141q-106-28-172-114T80-560v-160q0-66 47-113t113-47q22 0 42 7.5t40 15.5l238 97-160 60v60l440 280 40 200h-80l-40-80H560v160h-80v-160h-80L334-80Zm66-240h353l-63-40H400q-66 0-113-47t-47-113h80q0 33 23.5 56.5T400-440h165L320-596v-124q0-33-23.5-56.5T240-800q-33 0-56.5 23.5T160-720v160q0 100 70 170t170 70ZM240-680q-17 0-28.5-11.5T200-720q0-17 11.5-28.5T240-760q17 0 28.5 11.5T280-720q0 17-11.5 28.5T240-680Z"/></svg>',
+ dato:'<svg viewBox="0 -960 960 960"><path d="M480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z"/></svg>',
+ sleep:'<svg viewBox="0 -960 960 960"><path d="M40-200v-600h80v400h320v-320h320q66 0 113 47t47 113v360h-80v-120H120v120H40Zm240-240q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm240 40h320v-160q0-33-23.5-56.5T760-640H520v240ZM280-520q17 0 28.5-11.5T320-560q0-17-11.5-28.5T280-600q-17 0-28.5 11.5T240-560q0 17 11.5 28.5T280-520Z"/></svg>',
+ alt:'<svg viewBox="0 -960 960 960"><path d="M480-120 320-280l56-56 64 63v-414l-64 63-56-56 160-160 160 160-56 57-64-64v414l64-63 56 56-160 160Z"/></svg>'
+};
+function faunaValue(d){
+  let h='';
+  if(d.birds&&d.birds.length) h+='<div class="sp-group"><span class="sp-cat">Aves</span><span class="sp-list">'+spList(d.birds)+'</span></div>';
+  if(d.mammals&&d.mammals.length) h+='<div class="sp-group"><span class="sp-cat">Mamíferos</span><span class="sp-list">'+spList(d.mammals)+'</span></div>';
+  return h;
+}
+function climaValue(c){
+  const t=c.t.replace(/(\d)[–-](\d)/,'$1 a $2'); // rango con "a" para no chocar con el signo negativo
+  return '<span class="clima-t">'+t+'</span>'+c.x+'<div class="clima-w"><span class="wear-k">Ropa</span>'+c.w+'</div>';
+}
+function dRow(cls,icon,label,value,labelExtra){
+  return '<div class="row '+cls+'"><span class="row-ic">'+icon+'</span>'+
+    '<div class="row-b"><span class="row-k">'+label+(labelExtra?'<span class="row-k-x">'+labelExtra+'</span>':'')+'</span>'+
+    '<div class="row-v">'+value+'</div></div></div>';
+}
 
 
 /* ---------- shared helpers ---------- */
@@ -551,15 +641,15 @@ const SIL={
  tapir:'<svg viewBox="36 14 146 80"><g fill="currentColor"><path d="M40 40 C60 18,120 18,150 34 C165 42,168 40,178 46 C184 50,182 58,176 58 C172 60,166 56,162 56 C150 64,150 72,150 82 L138 82 L138 66 C120 74,80 74,62 66 L62 90 L50 90 L50 60 C44 56,38 50,40 40 Z"/></g><circle cx="176" cy="52" r="3" fill="var(--card)"/></svg>'
 };
 const ICONS={
- plane:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 3c1 0 1.6 1 1.6 3v4l6 3v2l-6-1.4v3l2 1v2l-3.6-1-3.6 1v-2l2-1v-3l-6 1.4v-2l6-3V6c0-2 .6-3 1.6-3z"/></svg>',
- car:'<svg class="ic" viewBox="0 0 24 24"><path d="M3 14l2-5h14l2 5"/><path d="M2 14h20v4H2z"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg>',
- train:'<svg class="ic" viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="12" rx="2"/><path d="M6 11h12"/><circle cx="9" cy="13.5" r=".6"/><circle cx="15" cy="13.5" r=".6"/><path d="M8 20l-2 2M16 20l2 2"/></svg>',
- boat:'<svg class="ic" viewBox="0 0 24 24"><path d="M3 14h18l-2.5 5H5.5z"/><path d="M12 3v10M12 3l6 3-6 2.5"/></svg>',
- mountain:'<svg class="ic" viewBox="0 0 24 24"><path d="M2 20l6-11 4 6 2.5-3.5L21 20z"/></svg>',
- wetland:'<svg class="ic" viewBox="0 0 24 24"><path d="M2 8c2 2 4 2 6 0s4-2 6 0 4 2 6 0M2 14c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/></svg>',
- city:'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="10" width="6" height="10"/><rect x="11" y="5" width="8" height="15"/><path d="M5 13h2M5 16h2M13 8h2M13 11h2M13 14h2"/></svg>',
- binoculars:'<svg class="ic" viewBox="0 0 24 24"><circle cx="7" cy="14" r="3.6"/><circle cx="17" cy="14" r="3.6"/><path d="M7 10.4l2-4.4h2M17 10.4l-2-4.4h-2M10.6 14h2.8"/></svg>',
- bird:'<svg class="ic" viewBox="0 0 24 24"><path d="M2 11c4 0 5 3.5 10 3.5S18 11 22 11"/></svg>'
+ plane:'<svg class="ic" viewBox="0 -960 960 960"><path d="M340-80v-60l80-60v-220L80-320v-80l340-200v-220q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v220l340 200v80L540-420v220l80 60v60l-140-40-140 40Z"/></svg>',
+ car:'<svg class="ic" viewBox="0 -960 960 960"><path d="M240-200v40q0 17-11.5 28.5T200-120h-40q-17 0-28.5-11.5T120-160v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-120h-40q-17 0-28.5-11.5T720-160v-40H240Zm-8-360h496l-42-120H274l-42 120Zm68 240q25 0 42.5-17.5T360-380q0-25-17.5-42.5T300-440q-25 0-42.5 17.5T240-380q0 25 17.5 42.5T300-320Zm360 0q25 0 42.5-17.5T720-380q0-25-17.5-42.5T660-440q-25 0-42.5 17.5T600-380q0 25 17.5 42.5T660-320Zm-460 40h560v-200H200v200Z"/></svg>',
+ train:'<svg class="ic" viewBox="0 -960 960 960"><path d="M160-340v-380q0-53 27.5-84.5t72.5-48q45-16.5 102.5-22T480-880q66 0 124.5 5.5t102 22q43.5 16.5 68.5 48t25 84.5v380q0 59-40.5 99.5T660-200l60 60v20h-80l-80-80H400l-80 80h-80v-20l60-60q-59 0-99.5-40.5T160-340Zm320-460q-106 0-155 12.5T258-760h448q-15-17-64.5-28.5T480-800ZM240-560h200v-120H240v120Zm280 0h200v-120H520v120ZM340-320q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm280 0q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm-320 40h360q26 0 43-17t17-43v-140H240v140q0 26 17 43t43 17Z"/></svg>',
+ boat:'<svg class="ic" viewBox="0 -960 960 960"><path d="M158-200 82-468q-3-12 2.5-28t23.5-22l52-18v-184q0-33 23.5-56.5T240-800h120v-120h240v120h120q33 0 56.5 23.5T800-720v184l52 18q21 8 25 23.5t1 26.5l-76 268q-50 0-91-23.5T640-280q-30 33-71 56.5T480-200q-48 0-89-23.5T320-280q-30 33-71 56.5T158-200ZM80-40v-80h80q42 0 83-13t77-39q36 26 77 38t83 12q42 0 83-12t77-38q36 26 77 39t83 13h80v80h-80q-42 0-82-10t-78-30q-38 20-78.5 30T480-40q-41 0-81.5-10T320-80q-38 20-78 30t-82 10H80Zm160-522 240-78 240 78v-158H240v158Zm240 282q47 0 79.5-33t80.5-89q48 54 65 74t41 34l44-160-310-102-312 102 46 158q24-14 41-32t65-74q50 57 81.5 89.5T480-280Z"/></svg>',
+ mountain:'<svg class="ic" viewBox="0 -960 960 960"><path d="m40-240 240-320 180 240h300L560-586 460-454l-50-66 150-200 360 480H40Zm361-80h160l-80-107-80 107Z"/></svg>',
+ wetland:'<svg class="ic" viewBox="0 -960 960 960"><path d="M80-146v-78q29 0 49.5-9t41.5-19.5q21-10.5 46.5-19T280-280q38 0 62.5 8.5t45.5 19q21 10.5 42 19.5t50 9q29 0 50-9t42-19.5q21-10.5 46-19t62-8.5q38 0 63 8.5t46 19q21 10.5 42 19.5t49 9v78q-38 0-63.5-9T770-174.5q-21-10.5-41-19t-49-8.5q-28 0-48.5 8.5t-41 19Q570-164 544.5-155t-64.5 9q-39 0-64.5-9t-46-19.5Q349-185 329-193.5t-49-8.5q-28 0-48.5 8.5t-41.5 19Q169-164 143.5-155T80-146Zm0-178v-78q29 0 49.5-9t41.5-19.5q21-10.5 46.5-19T280-458q38 0 62.5 8.5t45.5 19q21 10.5 42 19.5t50 9q29 0 50-9t42-19.5q21-10.5 46-19t62-8.5q38 0 63 8.5t46 19q21 10.5 42 19.5t49 9v78q-38 0-63.5-9T770-352.5q-21-10.5-41-19t-49-8.5q-29 0-49.5 8.5t-41 19Q569-342 544-333t-64 9q-39 0-64.5-9t-46-19.5Q349-363 329-371.5t-49-8.5q-28 0-48.5 8.5t-41.5 19Q169-342 143.5-333T80-324Zm0-178v-78q29 0 49.5-9t41.5-19.5q21-10.5 46.5-19T280-636q38 0 62.5 8.5t45.5 19q21 10.5 42 19.5t50 9q29 0 50-9t42-19.5q21-10.5 46-19t62-8.5q38 0 63 8.5t46 19q21 10.5 42 19.5t49 9v78q-38 0-63.5-9T770-530.5q-21-10.5-41-19t-49-8.5q-28 0-48.5 8.5t-41 19Q570-520 544.5-511t-64.5 9q-39 0-64.5-9t-46-19.5Q349-541 329-549.5t-49-8.5q-28 0-48.5 8.5t-41.5 19Q169-520 143.5-511T80-502Zm0-178v-78q29 0 49.5-9t41.5-19.5q21-10.5 46.5-19T280-814q38 0 62.5 8.5t45.5 19q21 10.5 42 19.5t50 9q29 0 50-9t42-19.5q21-10.5 46-19t62-8.5q38 0 63 8.5t46 19q21 10.5 42 19.5t49 9v78q-38 0-63.5-9T770-708.5q-21-10.5-41-19t-49-8.5q-28 0-48.5 8.5t-41 19Q570-698 544.5-689t-64.5 9q-39 0-64.5-9t-46-19.5Q349-719 329-727.5t-49-8.5q-28 0-48.5 8.5t-41.5 19Q169-698 143.5-689T80-680Z"/></svg>',
+ city:'<svg class="ic" viewBox="0 -960 960 960"><path d="M120-120v-560h240v-80l120-120 120 120v240h240v400H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>',
+ binoculars:'<svg class="ic" viewBox="0 -960 960 960"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>',
+ bird:'<svg class="ic" viewBox="0 -960 960 960"><path d="m334-80-74-30 58-141q-106-28-172-114T80-560v-160q0-66 47-113t113-47q22 0 42 7.5t40 15.5l238 97-160 60v60l440 280 40 200h-80l-40-80H560v160h-80v-160h-80L334-80Zm66-240h353l-63-40H400q-66 0-113-47t-47-113h80q0 33 23.5 56.5T400-440h165L320-596v-124q0-33-23.5-56.5T240-800q-33 0-56.5 23.5T160-720v160q0 100 70 170t170 70ZM240-680q-17 0-28.5-11.5T200-720q0-17 11.5-28.5T240-760q17 0 28.5 11.5T280-720q0 17-11.5 28.5T240-680Z"/></svg>'
 };
 const MODES={plane:'Vuelo',car:'Traslado en coche',train:'Tren',boat:'Navegación en barca',mountain:'Paso de montaña',wetland:'Humedal',city:'Día en la ciudad',binoculars:'Jornada de observación',bird:'Búsqueda de aves rapaces'};
 const DAYICON={'14':'plane','15':'car','16':'mountain','17':'train','18':'mountain','19':'car','20':'boat','21':'boat','22':'binoculars','23':'boat','24':'bird','25':'binoculars','26':'wetland','27':'bird','28':'city','29':'plane','30':'plane'};
@@ -605,8 +695,7 @@ function bar(d){
   const tRu='Ruta con observación — el propio trayecto es pajareo (barca, carretera del Manu). ≈'+d.ruta+' h';
   const tLi='A pie, turismo o descanso — observación parada, visitas o descanso.';
   const seg=(cls,w,tip)=> w>0 ? '<span class="seg '+cls+'" style="width:'+w+'%" tabindex="0" role="img" data-tip="'+tip+'" aria-label="'+tip+'"></span>' : '';
-  return '<div class="transit"><div class="bar">'+seg('enlace',en,tEn)+seg('ruta',ru,tRu)+seg('libre',li,tLi)+'</div>'+
-         '<small>'+d.tlab+' · el resto, para observar, turismo o descanso</small></div>';
+  return '<div class="bar">'+seg('enlace',en,tEn)+seg('ruta',ru,tRu)+seg('libre',li,tLi)+'</div>';
 }
 function renderDays(){
   const cont=document.getElementById('days'); cont.innerHTML='';
@@ -614,19 +703,21 @@ function renderDays(){
     const sec=document.createElement('section');
     sec.className='d pa-'+d.ph; sec.id='d'+d.n;
     const hasFauna=(d.birds&&d.birds.length)||(d.mammals&&d.mammals.length);
+    const c=CLIMA[d.n];
+    let rows=dRow('plan',SEC.plan,'El día',d.do)+
+      dRow('transit',SEC.transit,'Traslado',bar(d),d.tlab);
+    if(d.habitats&&d.habitats!=='—') rows+=dRow('hab',SEC.hab,'Hábitats',d.habitats);
+    if(c) rows+=dRow('clima',WICONS[CLIMAICON[d.n]]||SEC.plan,'Clima y ropa',climaValue(c));
+    if(hasFauna) rows+=dRow('fauna',SEC.fauna,'Fauna destacada',faunaValue(d));
+    rows+=dRow('dato',SEC.dato,'Dato',d.data);
     sec.innerHTML=
-      '<div class="d-head"><span class="dmode" title="'+MODES[DAYICON[d.n]]+'" aria-label="'+MODES[DAYICON[d.n]]+'">'+ICONS[DAYICON[d.n]]+'</span><div class="d-date">'+d.n+'<span>'+d.dow+' · ago</span></div>'+
-        '<span class="chip">'+d.hab+'</span><span class="alt">'+d.alt+'</span></div>'+
-      '<div class="d-title">'+d.title+'</div>'+
-      '<p class="d-do">'+d.do+'</p>'+
-      bar(d)+
-      '<div class="kv"><span class="k">Dormir</span><b>'+d.sleep+'</b></div>'+
-      '<div class="kv"><span class="k">Hábitats</span>'+d.habitats+'</div>'+
-      (hasFauna?('<div class="sp"><h4>Fauna destacada</h4>'+
-        (d.birds&&d.birds.length?'<div class="sp-group"><span class="sp-cat">Aves</span> '+spList(d.birds)+'</div>':'')+
-        (d.mammals&&d.mammals.length?'<div class="sp-group"><span class="sp-cat">Mamíferos</span> '+spList(d.mammals)+'</div>':'')+
-      '</div>'):'')+
-      '<p class="d-data"><b>Dato:</b> '+d.data+'</p>';
+      '<div class="d-head"><span class="dmode" title="'+MODES[DAYICON[d.n]]+'" aria-label="'+MODES[DAYICON[d.n]]+'">'+ICONS[DAYICON[d.n]]+'</span>'+
+        '<div class="d-date">'+d.n+'<span>'+d.dow+' · ago</span></div>'+
+        '<span class="chip">'+d.hab+'</span>'+
+        (d.alt&&d.alt!=='—'?'<span class="alt">'+SEC.alt+d.alt+'</span>':'')+'</div>'+
+      '<h3 class="d-title">'+d.title+'</h3>'+
+      '<div class="d-rows">'+rows+'</div>'+
+      '<div class="d-sleep"><span class="sl-ic">'+SEC.sleep+'</span><div class="sl-b"><span class="sl-k">Dónde dormimos</span><b>'+d.sleep+'</b></div></div>';
     cont.appendChild(sec);
   });
 }
