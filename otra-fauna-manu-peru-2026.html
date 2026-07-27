@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El otro Perú salvaje · Otra fauna — Perú 2026</title>
+<meta name="description" content="Guía visual de la otra fauna del viaje a Perú (agosto 2026): mamíferos, reptiles y mariposas de la puna andina al corazón del Manu, con probabilidad honesta para nuestras fechas.">
+<style>
+  :root{
+    --paper:#F2F4F0; --card:#FBFCFA; --ink:#1A241E; --ink-soft:#4A554D; --ink-faint:#7C857D; --line:#DCE1DA;
+    --transito:#5B6B73; --andes:#B0791C; --mapi:#2E7D6B; --cultural:#5A8C3E; --reservada:#1F5C3A; --harpia:#BE4527;
+    --ok:#4F8A3D; --mid:#B0791C; --low:#9AA39B;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(14px,4vw,40px)}
+  a{color:var(--cultural)}
+  :focus-visible{outline:2px solid var(--harpia);outline-offset:2px;border-radius:3px}
+  img{max-width:100%}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:600;background:color-mix(in srgb,var(--paper) 90%,white);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1000px;margin:0 auto;padding:9px clamp(14px,4vw,40px);display:flex;align-items:center;gap:14px}
+  .nav-t{font-family:var(--serif);font-weight:600;font-size:1rem;white-space:nowrap;text-decoration:none;color:var(--ink)}
+  .nav-t span{color:var(--harpia)}
+  .nav-links{display:flex;gap:3px;overflow-x:auto;margin-left:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;text-decoration:none;color:var(--ink-soft);padding:5px 10px;border-radius:7px;white-space:nowrap}
+  .nav-links a:hover{background:var(--card);color:var(--ink)}
+  .nav-links a.back{color:var(--harpia);font-weight:700}
+
+  /* hero */
+  header.hero{position:relative;background:#0c120e}
+  .hero-photo{position:relative;width:100%;height:clamp(430px,82vh,720px);overflow:hidden}
+  .hero-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%;display:block}
+  .hero-grad{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,15,11,.5) 0%,rgba(9,15,11,.05) 26%,rgba(9,15,11,0) 44%,rgba(9,15,11,.55) 74%,rgba(9,15,11,.92) 100%)}
+  .hero-over{position:absolute;left:0;right:0;bottom:0;max-width:1000px;margin:0 auto;padding:0 clamp(14px,4vw,40px) clamp(24px,5vw,50px)}
+  .hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#F4CE86;margin:0 0 12px;font-weight:600;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+  .hero-photo h1{font-family:var(--serif);font-weight:600;line-height:.98;font-size:clamp(2.5rem,8.5vw,5rem);margin:0;letter-spacing:-.02em;color:#fff;text-shadow:0 3px 30px rgba(0,0,0,.62)}
+  .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.08rem,2.7vw,1.6rem);color:rgba(255,255,255,.95);margin:.5em 0 0;max-width:40ch;line-height:1.24;text-shadow:0 1px 16px rgba(0,0,0,.62)}
+  .hero-credit{position:absolute;z-index:3;right:clamp(10px,3vw,18px);top:12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.02em;color:rgba(255,255,255,.8);background:rgba(0,0,0,.36);padding:4px 9px;border-radius:7px;text-decoration:none;backdrop-filter:blur(2px)}
+  .hero-credit:hover{color:#fff;background:rgba(0,0,0,.52)}
+
+  /* intro */
+  .intro{padding:clamp(34px,6vw,62px) 0 0}
+  .intro p{max-width:64ch;color:var(--ink-soft);font-size:1.06rem}
+  .intro p.big-lede{font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.42rem);line-height:1.5;color:var(--ink);max-width:60ch}
+  .intro p b{color:var(--ink)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:22px 0 0;padding:14px 16px;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .legend li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-soft)}
+  .legend .sw{width:26px;height:7px;border-radius:99px;flex:0 0 auto}
+  .legend b{color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+  .chips a{font-family:var(--mono);font-size:.72rem;text-decoration:none;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+  .chips a:hover{color:var(--ink);border-color:var(--ink-faint)}
+  .chips a b{color:var(--zc,var(--ink));font-weight:700}
+
+  /* zone blocks + cards */
+  section.sec{padding:clamp(30px,5vw,54px) 0 0}
+  .fz{margin-top:36px;scroll-margin-top:64px}
+  .fz-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding-bottom:8px;border-bottom:2px solid color-mix(in srgb,var(--zc) 46%,var(--line))}
+  .fz-dot{width:13px;height:13px;border-radius:50%;background:var(--zc);flex:0 0 auto;box-shadow:0 0 0 3px color-mix(in srgb,var(--zc) 18%,transparent)}
+  .fz-t{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,3vw,1.7rem);line-height:1.06;color:var(--ink)}
+  .fz-d{font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-left:auto;white-space:nowrap}
+  .fz-desc{max-width:70ch;color:var(--ink-soft);font-size:1rem;font-style:italic;font-family:var(--serif);margin:12px 0 2px}
+  .stars{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}
+  .star{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,30,22,.03);transition:box-shadow .22s ease,transform .22s ease}
+  .star:hover{box-shadow:0 16px 34px -22px rgba(20,30,22,.4);transform:translateY(-2px)}
+  .star-ill{height:190px;position:relative;overflow:hidden;border-bottom:3px solid currentColor;background:color-mix(in srgb,currentColor 12%,var(--card))}
+  .star-photo{width:100%;height:100%;object-fit:cover;display:block}
+  .star-body{padding:13px 16px 16px}
+  .star .nm{font-family:var(--serif);font-size:1.18rem;font-weight:600;line-height:1.12}
+  .star .sci{font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--ink-faint)}
+  .star .phase{font-family:var(--mono);font-size:.57rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:7px 0 6px}
+  .star .wh{font-size:.86rem;color:var(--ink-soft);margin:0 0 12px}
+  .gauge{display:flex;align-items:center;gap:9px}
+  .gtrack{flex:1;height:7px;border-radius:99px;background:color-mix(in srgb,var(--ink-faint) 20%,var(--card));overflow:hidden}
+  .gfill{height:100%;border-radius:99px}
+  .glab{font-family:var(--mono);font-size:.6rem;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+  .section-label{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 8px;display:flex;align-items:center;gap:12px}
+  .section-label .no{color:var(--harpia)}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  .sec h2.big{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4.4vw,2.6rem);margin:.1em 0 .4em;letter-spacing:-.01em;line-height:1.05}
+
+  /* ghosts band */
+  .ghosts{margin-top:clamp(46px,7vw,84px);background:linear-gradient(180deg,#12180F 0%,#0E140D 100%);color:#EAF0E6;padding:clamp(40px,6vw,72px) 0 clamp(44px,6vw,76px);position:relative;overflow:hidden}
+  .ghosts::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(190,69,39,.14),transparent 60%);pointer-events:none}
+  .ghosts .section-label{color:#8A9584}
+  .ghosts .section-label::after{background:rgba(255,255,255,.14)}
+  .ghosts .section-label .no{color:#E98A5C}
+  .ghosts h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,5vw,3rem);margin:.05em 0 .35em;color:#fff;letter-spacing:-.01em;line-height:1.02}
+  .ghosts .lead{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.5vw,1.4rem);color:rgba(234,240,230,.86);max-width:56ch;line-height:1.42}
+  .ghost-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:30px}
+  .ghost{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .ghost-ph{height:210px;position:relative;overflow:hidden;filter:saturate(.92)}
+  .ghost-ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .ghost-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,13,0) 45%,rgba(14,20,13,.5) 100%)}
+  .ghost-b{padding:15px 18px 20px}
+  .ghost-nm{font-family:var(--serif);font-size:1.32rem;font-weight:600;color:#fff;line-height:1.1}
+  .ghost-sci{font-family:var(--serif);font-style:italic;font-size:.84rem;color:#93A08C;margin-top:2px}
+  .ghost-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#E98A5C;border:1px solid rgba(233,138,92,.4);border-radius:999px;padding:3px 10px;margin:12px 0 11px}
+  .ghost-wh{font-size:.9rem;color:rgba(234,240,230,.8);margin:0;line-height:1.5}
+
+  /* footer */
+  footer{margin-top:clamp(40px,6vw,72px);border-top:1px solid var(--line);padding:26px 0 60px;font-size:.86rem;color:var(--ink-faint)}
+  footer a{color:var(--ink-soft)}
+  .back-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;color:#fff;background:var(--reservada);padding:11px 20px;border-radius:999px;box-shadow:0 6px 16px -8px rgba(31,92,58,.7);margin:6px 0 22px}
+  .cred{margin-top:18px}
+  .cred summary{cursor:pointer;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700}
+  .cred ul{margin:12px 0 0;padding-left:18px;columns:2;column-gap:28px}
+  @media(max-width:560px){.cred ul{columns:1}}
+  .cred li{color:var(--ink-faint);font-size:.78rem;line-height:1.5;margin:0 0 5px;break-inside:avoid}
+  .cred li b{color:var(--ink-soft);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="nav-t" href="index.html">Perú <span>2026</span></a>
+    <div class="nav-links">
+      <a href="#andes">Alta montaña</a>
+      <a href="#mapi">Bosque nuboso</a>
+      <a href="#harpia">Piedemonte</a>
+      <a href="#reservada">Selva baja</a>
+      <a href="#fantasmas">Fantasmas</a>
+      <a class="back" href="index.html">← Diario</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Jaguar_(Panthera_onca_palustris)_male_Three_Brothers_River.JPG" target="_blank" rel="noopener">Jaguar © Charles J. Sharp · CC BY-SA 4.0</a>
+  <div class="hero-photo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Jaguar_%28Panthera_onca_palustris%29_male_Three_Brothers_River.JPG/1280px-Jaguar_%28Panthera_onca_palustris%29_male_Three_Brothers_River.JPG" alt="Jaguar caminando por una playa de río en la Amazonía">
+    <div class="hero-grad"></div>
+    <div class="hero-over">
+      <p class="hero-eyebrow">Perú 2026 · Otra fauna</p>
+      <h1>El otro Perú salvaje</h1>
+      <p class="hero-sub">De los ciervos de la puna al jaguar de las playas del Manu — la fauna que no vuela y que también salimos a buscar.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="intro">
+    <p class="big-lede">Venimos por las aves —cientos de ellas—, pero el Perú salvaje no se acaba en el aire. Entre la queñua helada de los 4.300 metros y el vapor del Amazonas se mueve otro elenco: monos que aúllan al amanecer, roedores del tamaño de un cerdo, un felino moteado que aún hace latir el corazón de la selva.</p>
+    <p>Esta es la guía de <b>esa otra fauna</b> —la que camina, trepa, nada y acecha—, ordenada por los paisajes que cruzaremos. No es una lista de deseos: es una <b>expectativa honesta</b> para la segunda quincena de agosto, con la estación seca en los Andes y las <b>aguas bajas</b> en la Amazonía, la mejor ventana del año para ver mamíferos en las playas y las cochas del Manu. Cada especie lleva su probabilidad real: de las que caen casi solas a los <b>fantasmas</b> que solo unos pocos afortunados llegan a ver.</p>
+    <ul class="legend">
+      <li><span class="sw" style="background:var(--ok)"></span><b>Muy probable</b> — alta y constante</li>
+      <li><span class="sw" style="background:var(--mid)"></span><b>Con esfuerzo</b> — media, algo de suerte</li>
+      <li><span class="sw" style="background:var(--low)"></span><b>Improbable</b> — baja o al límite</li>
+    </ul>
+    <ul class="chips">
+      <li><a href="#andes" style="--zc:var(--andes)"><b>●</b> Alta montaña andina</a></li>
+      <li><a href="#mapi" style="--zc:var(--mapi)"><b>●</b> Bosque nuboso</a></li>
+      <li><a href="#harpia" style="--zc:var(--harpia)"><b>●</b> Piedemonte del Manu</a></li>
+      <li><a href="#reservada" style="--zc:var(--reservada)"><b>●</b> Selva baja · Zona Reservada</a></li>
+      <li><a href="#fantasmas" style="--zc:#E98A5C"><b>●</b> Los fantasmas del Manu</a></li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <p class="section-label"><span class="no">◆</span> Por zona</p>
+    <div id="zonas"></div>
+  </section>
+
+</div>
+
+<section class="ghosts" id="fantasmas">
+  <div class="wrap">
+    <p class="section-label"><span class="no">◆</span> Casi imposibles</p>
+    <h2>Los fantasmas del Manu</h2>
+    <p class="lead">Existen. Están ahí, en algún lugar del bosque. Pero verlos es cuestión de una suerte extraordinaria: son los avistamientos con los que se sueña y de los que se habla durante años. Si aparece uno solo de estos, el viaje ya habrá valido la pena.</p>
+    <div class="ghost-grid" id="ghost-grid"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <a class="back-link" href="index.html">← Volver al diario de viaje</a>
+    <p>Guía de fauna no-ave del viaje a Perú, agosto 2026 · complemento de la <a href="aves-por-hotspot-peru-2026.html">guía de aves por hotspot</a>. Probabilidades = expectativa cualitativa honesta para la segunda quincena de agosto (seca andina, aguas bajas amazónicas); nunca garantías. La fauna es salvaje y libre.</p>
+    <details class="cred" id="cred"></details>
+  </footer>
+</div>
+
+<script>
+const GAUGE={ok:{p:88,l:'Muy probable',c:'var(--ok)'},mid:{p:52,l:'Con esfuerzo',c:'var(--mid)'},low:{p:24,l:'Improbable',c:'var(--low)'}};
+
+const ZONES=[
+ {zone:'andes', zlab:'Alta montaña andina', zdias:'días 16, 26–27',
+  zdesc:'El techo del viaje: pastizal de puna, roquedos y bosques relictos de queñua donde el aire corta y la vida se esconde entre las piedras.',
+  sp:[
+   {n:'Vizcacha de montaña',sci:'Lagidium peruanum',dias:'d.27 (Chonta) · d.16',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Rodent_on_a_rock_in_South_America-8.jpg/500px-Rodent_on_a_rock_in_South_America-8.jpg',wh:'Colonias entre las rocas del cañón de Chonta; a media mañana salen a asolearse. También en los roquedos de Abra Málaga.',by:'Alex Lee',lic:'CC BY 2.0',href:'https://commons.wikimedia.org/wiki/File:Rodent_on_a_rock_in_South_America-8.jpg'},
+   {n:'Zorro andino (culpeo)',sci:'Lycalopex culpaeus',dias:'d.16, 27',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Culpeo_%28Lycalopex_culpaeus_culpaeus%29_Lo_Barnechea_2.jpg/500px-Culpeo_%28Lycalopex_culpaeus_culpaeus%29_Lo_Barnechea_2.jpg',wh:'Ronda pastizales y bordes de puna, más activo al alba y al ocaso. Avistamiento de suerte y casi siempre fugaz.',by:'Charles J. Sharp',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Culpeo_(Lycalopex_culpaeus_culpaeus)_Lo_Barnechea_2.jpg'},
+   {n:'Taruca',sci:'Hippocamelus antisensis',dias:'d.16, 27',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Hippocamelus_antisensis_249293769.jpg/500px-Hippocamelus_antisensis_249293769.jpg',wh:'Ciervo andino de laderas escarpadas, en pequeños grupos muy esquivos. Posible pero improbable en Abra Málaga o Chonta.',by:'Tristan Jobin',lic:'CC BY 4.0',href:'https://commons.wikimedia.org/wiki/File:Hippocamelus_antisensis_249293769.jpg'},
+   {n:'Vicuña',sci:'Vicugna vicugna',dias:'d.16, 26–27',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Vicuna_%2889163948%29_%28cropped%29.jpg/500px-Vicuna_%2889163948%29_%28cropped%29.jpg',wh:'Camélido silvestre de las mesetas altas; depende de la ruta. En los llanos abiertos camino de Abra Málaga, con suerte.',by:'Thomas Quine',lic:'CC BY 2.0',href:'https://commons.wikimedia.org/wiki/File:Vicuna_(89163948)_(cropped).jpg'}
+  ]},
+ {zone:'mapi', zlab:'Bosque nuboso', zdias:'días 17–19, 25–26',
+  zdesc:'La selva de nubes que envuelve Machu Picchu y la carretera del Manu. Aquí los mamíferos son sombras: rara vez se dejan ver, y por eso valen tanto.',
+  sp:[
+   {n:'Oso de anteojos',sci:'Tremarctos ornatus',dias:'d.19, 25–26',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg/500px-Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg',wh:'El único oso de Sudamérica y el gran premio del bosque nuboso. Muy escaso; alguna vez cruza la carretera del Manu al amanecer.',by:'Wilfredor',lic:'CC0',href:'https://commons.wikimedia.org/wiki/File:Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg'},
+   {n:'Mono choro común',sci:'Lagothrix lagothricha',dias:'d.19, 25',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Lagothrix_lagotricha_%28male%29.jpg/500px-Lagothrix_lagotricha_%28male%29.jpg',wh:'Tropas ruidosas en el dosel del bosque nuboso y el piedemonte; se desplazan mucho. Bajada del Manu (d.19) y San Pedro (d.25).',by:'Hans Hillewaert',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Lagothrix_lagotricha_(male).jpg'}
+  ]},
+ {zone:'harpia', zlab:'Piedemonte del Manu', zdias:'días 20, 24–25',
+  zdesc:'La bisagra entre la montaña y la llanura. Bajan las nieblas, sube el calor y aparecen los primeros primates pequeños, las ranas de colores y el destello azul de los morfos.',
+  sp:[
+   {n:'Pichico común',sci:'Leontocebus weddelli',dias:'d.20, 25',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Flickr_-_ggallice_-_Saddleback_tamarin_%281%29.jpg/500px-Flickr_-_ggallice_-_Saddleback_tamarin_%281%29.jpg',wh:'Pequeño primate de sotobosque, en grupos familiares nerviosos. Piedemonte y borde de la selva baja.',by:'Geoff Gallice',lic:'CC BY 2.0',href:'https://commons.wikimedia.org/wiki/File:Flickr_-_ggallice_-_Saddleback_tamarin_(1).jpg'},
+   {n:'Rana punta de flecha',sci:'Ranitomeya spp.',dias:'d.24–25',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/R._imitator_Varadero.jpg/500px-R._imitator_Varadero.jpg',wh:'Ranas diminutas y tóxicas de colores de aviso, en la hojarasca húmeda. Mira al suelo en los senderos del piedemonte.',by:'Gabsch',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:R._imitator_Varadero.jpg'},
+   {n:'Mariposa morfo azul',sci:'Morpho spp.',dias:'d.20–25',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Morpho_menelaus_%28Linnaeus%2C_1758%29_in_Museu_de_Zoologia_da_USP.jpg/500px-Morpho_menelaus_%28Linnaeus%2C_1758%29_in_Museu_de_Zoologia_da_USP.jpg',wh:'Grandes mariposas de azul metálico que patrullan claros y orillas; en agosto acuden a las playas de río a beber sales.',by:'Mário NET',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Morpho_menelaus_(Linnaeus,_1758)_in_Museu_de_Zoologia_da_USP.jpg'}
+  ]},
+ {zone:'reservada', zlab:'Selva baja · Zona Reservada del Manu', zdias:'días 20–24',
+  zdesc:'El corazón del viaje. Seis días de barca, cocha y bosque primario, donde se concentra casi todo el bestiario amazónico. En agosto, con el río bajo, la selva se asoma a las playas.',
+  sp:[
+   {n:'Maquisapa negro',sci:'Ateles chamek',dias:'d.21–22',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ateles_chamek_SP_Zoo.jpg/500px-Ateles_chamek_SP_Zoo.jpg',wh:'El primate más grande del Manu, acróbata del dosel alto. Frecuente en el bosque primario de la Zona Reservada.',by:'Miguelrangeljr',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Ateles_chamek_SP_Zoo.jpg'},
+   {n:'Mono aullador rojo',sci:'Alouatta seniculus',dias:'d.20–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Alouatta_seniculus_Sorocaba.JPG/500px-Alouatta_seniculus_Sorocaba.JPG',wh:'Se oye antes de verse: su bramido al alba y al ocaso retumba a kilómetros. Grupos en el dosel junto a las cochas.',by:'Miguelrangeljr',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Alouatta_seniculus_Sorocaba.JPG'},
+   {n:'Mono ardilla',sci:'Saimiri boliviensis',dias:'d.20–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Saimiri_boliviensis_522226471.jpg/500px-Saimiri_boliviensis_522226471.jpg',wh:'Tropas numerosas y bulliciosas cruzando el sotobosque; de los primates más fáciles de ver en la selva baja.',by:'formicacid',lic:'CC0',href:'https://commons.wikimedia.org/wiki/File:Saimiri_boliviensis_522226471.jpg'},
+   {n:'Machín negro',sci:'Sapajus apella',dias:'d.20–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Tufted_capuchin_on_a_branch_in_Singapore.jpg/500px-Tufted_capuchin_on_a_branch_in_Singapore.jpg',wh:'Capuchino curioso y oportunista, muy común; a menudo en bandas mixtas con los monos ardilla.',by:'Basile Morin',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Tufted_capuchin_on_a_branch_in_Singapore.jpg'},
+   {n:'Pichico emperador',sci:'Saguinus imperator',dias:'d.21–22',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Tamarin_portrait.JPG/500px-Tamarin_portrait.JPG',wh:'Inconfundible por su bigote blanco. Grupitos en el sotobosque: localizado, pero todo un espectáculo.',by:'Brocken Inaglory',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Tamarin_portrait.JPG'},
+   {n:'Huapo negro (saki)',sci:'Pithecia irrorata',dias:'d.21–22',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Pithecia_irrorata_-Brazil-8b.jpg/500px-Pithecia_irrorata_-Brazil-8b.jpg',wh:'Primate de cola tupida y pelaje gris jaspeado, tímido y silencioso; salta por el dosel medio. Menos frecuente que los demás monos, pero regular en bosque primario.',by:'Ana Cotta',lic:'CC BY 2.0',href:'https://commons.wikimedia.org/wiki/File:Pithecia_irrorata_-Brazil-8b.jpg'},
+   {n:'Mono nocturno',sci:'Aotus nigriceps',dias:'d.22 (noche)',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Aotus_nigriceps_1.jpg/500px-Aotus_nigriceps_1.jpg',wh:'El único primate nocturno; se busca con linterna en la caminata nocturna (d.22) o asomando de huecos de árbol al anochecer.',by:'DuSantos',lic:'CC BY 2.0',href:'https://commons.wikimedia.org/wiki/File:Aotus_nigriceps_1.jpg'},
+   {n:'Perezoso de tres dedos',sci:'Bradypus variegatus',dias:'d.20–24',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Brown-throated_sloth_%28Bradypus_variegatus%29_female.jpg/500px-Brown-throated_sloth_%28Bradypus_variegatus%29_female.jpg',wh:'Cuelga inmóvil en el dosel, casi siempre solo. Diurno pero lentísimo y muy camuflado; suele localizarlo el guía por su bulto entre las ramas.',by:'Charles J. Sharp',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Brown-throated_sloth_(Bradypus_variegatus)_female.jpg'},
+   {n:'Perezoso de dos dedos',sci:'Choloepus didactylus',dias:'d.22 (noche)',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Choloepus_didactylus_11095533.jpg/500px-Choloepus_didactylus_11095533.jpg',wh:'Más grande, rubio y esquivo que el de tres dedos, y nocturno: con suerte en la caminata nocturna (d.22) o dormido hecho un ovillo en una horqueta alta.',by:'Julien Renoult',lic:'CC BY 4.0',href:'https://commons.wikimedia.org/wiki/File:Choloepus_didactylus_11095533.jpg'},
+   {n:'Capibara (ronsoco)',sci:'Hydrochoerus hydrochaeris',dias:'d.21–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Capybaracropped.jpg/500px-Capybaracropped.jpg',wh:'El roedor más grande del mundo, en playas y orillas del río Manu. Habitual desde la barca.',by:'Giles Laurent',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Capybaracropped.jpg'},
+   {n:'Añuje (agutí)',sci:'Dasyprocta variegata',dias:'d.20–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Dasyprocta_variegata_216239981.jpg/500px-Dasyprocta_variegata_216239981.jpg',wh:'Roedor diurno del tamaño de una liebre que trota por el suelo del bosque. De los mamíferos más fáciles: habitual en senderos y alrededor de los lodges.',by:'Kyle Van Houtan',lic:'CC BY 4.0',href:'https://commons.wikimedia.org/wiki/File:Dasyprocta_variegata_216239981.jpg'},
+   {n:'Sajino',sci:'Pecari tajacu',dias:'d.21–24',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Pecari_tajacu_-_02.jpg/500px-Pecari_tajacu_-_02.jpg',wh:'Pecarí de collar, en grupos pequeños y menos ruidosos que la huangana. Hoza el suelo del bosque; se cruza con cierta frecuencia en los senderos.',by:'Carlos Delgado',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Pecari_tajacu_-_02.jpg'},
+   {n:'Huangana',sci:'Tayassu pecari',dias:'d.21–23',tag:'mid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/White-lipped_peccary_%28Tayassu_pecari%29_Rio_Negro.jpg/500px-White-lipped_peccary_%28Tayassu_pecari%29_Rio_Negro.jpg',wh:'Piaras de decenas de pecaríes de labio blanco que remueven la hojarasca; ruidosas y de fuerte olor. Impredecibles, pero un espectáculo.',by:'Charles J. Sharp',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:White-lipped_peccary_(Tayassu_pecari)_Rio_Negro.jpg'},
+   {n:'Caimán negro',sci:'Melanosuchus niger',dias:'d.21–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Melanosuchus_niger_in_Moscow_zoo.jpg/500px-Melanosuchus_niger_in_Moscow_zoo.jpg',wh:'El gran depredador de las cochas (hasta 5 m). En el catamarán de Cocha Salvador y de noche, por el brillo rojo de sus ojos.',by:'Rigelus',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Melanosuchus_niger_in_Moscow_zoo.jpg'},
+   {n:'Taricaya',sci:'Podocnemis unifilis',dias:'d.21–24',tag:'ok',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Podocnemis_unifilis_in_Zoo_Krefeld_%282%29.JPG/500px-Podocnemis_unifilis_in_Zoo_Krefeld_%282%29.JPG',wh:'Tortugas de río asoleándose en troncos y playas; agosto, con aguas bajas, es su temporada de puesta.',by:'FakirNL',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Podocnemis_unifilis_in_Zoo_Krefeld_(2).JPG'},
+   {n:'Ocelote (tigrillo)',sci:'Leopardus pardalis',dias:'d.22–23 (noche)',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/500px-016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg',wh:'Felino manchado del tamaño de un perro mediano, nocturno y solitario. Posible en la caminata nocturna o desde el blind del tapir. Improbable, pero espectacular.',by:'Giles Laurent',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg'},
+   {n:'Tamandúa (oso melero)',sci:'Tamandua tetradactyla',dias:'d.20–24',tag:'low',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tamandua_tetradactyla_qtl1.jpg/500px-Tamandua_tetradactyla_qtl1.jpg',wh:'Oso hormiguero de collar, arborícola y de hábitos crepusculares; trepa troncos buscando termitas y hormigas. Se ve de vez en cuando, de día o con linterna.',by:'Quartl',lic:'CC BY-SA 3.0',href:'https://commons.wikimedia.org/wiki/File:Tamandua_tetradactyla_qtl1.jpg'}
+  ]}
+];
+
+const GHOSTS=[
+ {n:'Perro de orejas cortas',sci:'Atelocynus microtis',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Atelocynus_microtis_en_amazonie_p%C3%A9ruvienne.jpg/500px-Atelocynus_microtis_en_amazonie_p%C3%A9ruvienne.jpg',wh:'El cánido más enigmático de Sudamérica. Solitario, silencioso y tan escaso que durante décadas apenas se fotografió. Cruza un sendero, te mira un segundo y se desvanece en la espesura. El santo grial del Manu.',by:'Igor de le Vingne',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Atelocynus_microtis_en_amazonie_p%C3%A9ruvienne.jpg'},
+ {n:'Oso hormiguero gigante',sci:'Myrmecophaga tridactyla',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/185_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/500px-185_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg',wh:'Casi dos metros de rareza prehistórica: hocico tubular, garras de oso y una cola en bandera que usa de manta. Terrestre y errante, aparece sin avisar en un claro o una playa, y no se olvida jamás.',by:'Giles Laurent',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:185_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg'},
+ {n:'Anaconda verde',sci:'Eunectes murinus',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Sucuri_verde.jpg/500px-Sucuri_verde.jpg',wh:'La serpiente más pesada del planeta, señora de las cochas y los aguajales. Pasa el día sumergida y sale a asolearse en la orilla; encontrar sus anillos verdes enroscados al sol es puro golpe de fortuna.',by:'MKAMPIS',lic:'CC BY-SA 4.0',href:'https://commons.wikimedia.org/wiki/File:Sucuri_verde.jpg'}
+];
+
+function card(s,zone){
+  const g=GAUGE[s.tag];
+  return '<div class="star">'+
+    '<div class="star-ill" style="color:var(--'+zone+')"><img class="star-photo" src="'+s.img+'" alt="'+s.n+'" loading="lazy"></div>'+
+    '<div class="star-body">'+
+      '<div class="nm">'+s.n+'</div><div class="sci">'+s.sci+'</div>'+
+      '<div class="phase">'+s.dias+'</div>'+
+      '<div class="wh">'+s.wh+'</div>'+
+      '<div class="gauge"><div class="gtrack"><div class="gfill" style="width:'+g.p+'%;background:'+g.c+'"></div></div><span class="glab" style="color:'+g.c+'">'+g.l+'</span></div>'+
+    '</div></div>';
+}
+function renderZones(){
+  document.getElementById('zonas').innerHTML = ZONES.map(z=>
+    '<div class="fz" id="'+z.zone+'" style="--zc:var(--'+z.zone+')">'+
+      '<div class="fz-h"><span class="fz-dot"></span><span class="fz-t">'+z.zlab+'</span><span class="fz-d">'+z.zdias+'</span></div>'+
+      '<p class="fz-desc">'+z.zdesc+'</p>'+
+      '<div class="stars">'+z.sp.map(s=>card(s,z.zone)).join('')+'</div>'+
+    '</div>').join('');
+}
+function renderGhosts(){
+  document.getElementById('ghost-grid').innerHTML = GHOSTS.map(g=>
+    '<div class="ghost">'+
+      '<div class="ghost-ph"><img src="'+g.img+'" alt="'+g.n+'" loading="lazy"></div>'+
+      '<div class="ghost-b">'+
+        '<div class="ghost-nm">'+g.n+'</div><div class="ghost-sci">'+g.sci+'</div>'+
+        '<div class="ghost-tag">◆ Casi imposible</div>'+
+        '<p class="ghost-wh">'+g.wh+'</p>'+
+      '</div></div>').join('');
+}
+function renderCred(){
+  const hero='<li><b>Jaguar (portada)</b> — <a href="https://commons.wikimedia.org/wiki/File:Jaguar_(Panthera_onca_palustris)_male_Three_Brothers_River.JPG" target="_blank" rel="noopener">Charles J. Sharp</a> (CC BY-SA 4.0)</li>';
+  const all=[...ZONES.flatMap(z=>z.sp),...GHOSTS];
+  const items=all.map(s=>'<li><b>'+s.n+'</b> — <a href="'+s.href+'" target="_blank" rel="noopener">'+s.by+'</a> ('+s.lic+')</li>').join('');
+  document.getElementById('cred').innerHTML='<summary>Créditos fotográficos · Wikimedia Commons</summary><ul>'+hero+items+'</ul>';
+}
+renderZones(); renderGhosts(); renderCred();
+</script>
+</body>
+</html>
