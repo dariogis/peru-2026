@@ -275,7 +275,7 @@ function ordText(site){
  return base+' · orden <b>'+(curSort==='taxo'?'taxonómico':'por frecuencia')+'</b>';}
 function setSort(s){if(curSort===s)return;curSort=s;
  document.querySelectorAll('#sortbox .sb').forEach(b=>b.classList.toggle('on',b.dataset.s===s));
- renderList();}
+ renderGroupRow();renderList();}
 function getSite(id){return id==="todas"?DATA.todas:DATA.sites.find(s=>s.id===id);}
 
 function renderRegions(){
@@ -307,6 +307,19 @@ function paintGroupToggle(){
  if(b){b.classList.toggle('open',groupsOpen);b.setAttribute('aria-expanded',groupsOpen?'true':'false');
   b.innerHTML=groupBtnLabel()+'<span class="car">&#9660;</span>';}}
 function toggleGroups(){groupsOpen=!groupsOpen;paintGroupToggle();}
+/* group chips follow the active sort: taxonomic (field-guide sequence, ranked by the
+   group's earliest species) or by frequency (its most likely species first) */
+function groupOrder(sp){
+ const m=new Map();
+ sp.forEach(x=>{const t=taxoOf(x),p=probOf(x),cur=m.get(x.g);
+  if(!cur)m.set(x.g,{t:t,p:p});else{if(t<cur.t)cur.t=t;if(p>cur.p)cur.p=p;}});
+ const arr=[...m.entries()];
+ if(curSort==='taxo')arr.sort((a,b)=>a[1].t-b[1].t);else arr.sort((a,b)=>b[1].p-a[1].p);
+ return arr.map(e=>e[0]);}
+function renderGroupRow(){
+ const el=document.getElementById('frow'),site=getSite(curSite);
+ if(!el||!site)return;
+ el.innerHTML=["Todos",...groupOrder(site.sp)].map(g=>'<button class="fb'+(g===curFilter?' on':'')+'" onclick="setFilter(\''+g.replace(/'/g,"\\'")+'\')">'+g+'</button>').join("");}
 function setFilter(f){curFilter=f;groupsOpen=false;paintGroupToggle();renderList();updateFilterButtons();}
 function doSearch(v){curSearch=v.toLowerCase();renderList();}
 function setFlag(f){curFlag=(curFlag===f?"all":f);renderList();updateFlagButtons();}
@@ -316,7 +329,6 @@ function renderPanel(){
  if(!curSite){panelEl.innerHTML='<div class="empty">Elige un hotspot para ver su lista de aves<small>Selecciona una región arriba y luego una tarjeta de sitio.</small></div>';return;}
  const site=getSite(curSite);const rc=rcolor(site.region);
  const sorted=sortSp(site.sp);
- const groups=["Todos",...[...new Set([...site.sp].sort((a,b)=>probOf(b)-probOf(a)).map(s=>s.g))]];
  panelEl.style.setProperty('--rc',rc);
  panelEl.innerHTML=
   '<div class="ptop"><div class="ptitle">'+site.name+'</div><div class="pinfo">'+(site.dlabel?'<b style="color:'+rc+'">'+site.dlabel+(site.date?' · '+site.date:'')+'</b> &mdash; ':'')+site.info+'</div></div>'+
@@ -329,10 +341,10 @@ function renderPanel(){
    '</div></div>'+
   '<div class="frow flagrow" id="flagrow">'+'<button class="ff'+(curFlag==="all"?" on":"")+'" data-f="all" onclick="setFlag(\'all\')">Todas</button>'+'<button class="ff fend'+(curFlag==="end"?" on":"")+'" data-f="end" onclick="setFlag(\'end\')"><span class="dotf" style="background:var(--euc)"></span>Endémicas</button>'+'<button class="ff fhl'+(curFlag==="hl"?" on":"")+'" data-f="hl" onclick="setFlag(\'hl\')">&#9733; Destacadas</button>'+'<button class="ff fcr'+(curFlag==="cr"?" on":"")+'" data-f="cr" onclick="setFlag(\'cr\')">CR/EN Amenazadas</button>'+'</div>'+
   '<button class="gtoggle'+(groupsOpen?' open':'')+'" id="gtoggle" aria-expanded="'+(groupsOpen?'true':'false')+'" aria-controls="groupwrap" onclick="toggleGroups()">'+groupBtnLabel()+'<span class="car">&#9660;</span></button>'+
-  '<div class="groupwrap'+(groupsOpen?' open':'')+'" id="groupwrap"><div class="frow" id="frow">'+groups.map(g=>'<button class="fb'+(g===curFilter?' on':'')+'" onclick="setFilter(\''+g.replace(/'/g,"\\'")+'\')">'+g+'</button>').join("")+'</div></div>'+
+  '<div class="groupwrap'+(groupsOpen?' open':'')+'" id="groupwrap"><div class="frow" id="frow"></div></div>'+
   '<div class="legend"><span class="li"><span class="swatch" style="background:var(--euc)"></span>endémica de Perú</span><span class="li"><span class="badge b-star">&#9733;</span>destacada</span><span class="li"><span class="badge b-cr">CR/EN</span>amenazada</span><span class="li"><span class="swatch" style="background:var(--honey)"></span>'+(site.fr?'% frecuencia eBird':'probabilidad')+'</span></div>'+
   '<div class="slist" id="slist"></div>';
- renderList();
+ renderGroupRow();renderList();
 }
 function updateFilterButtons(){document.querySelectorAll('#frow .fb').forEach(b=>b.classList.toggle('on',b.textContent===curFilter));}
 function renderList(){
